@@ -61,7 +61,7 @@ ready(function(){
                 }
             }
 
-            // We loop through all the stickynotes 
+            // We loop through all the buttons to get them out of the dom
             let deleteStickyNoteBtn = document.querySelectorAll("#deleteStickyNote");
             function deleteStickyNote() {
                 for(let i = 0; i < deleteStickyNoteBtn.length; i++) {
