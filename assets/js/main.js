@@ -55,6 +55,8 @@ ready(function(){
                         </form>
 
                     </div>
+                    
+                    // In de css van mijn sticknote staat display:none als we klikken op de knop verandert dit naar display:block
                     <div id="StickyNote" style="display:block"> ${valueInput} </div>`
                 }
             }
