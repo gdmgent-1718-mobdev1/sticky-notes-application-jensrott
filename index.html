@@ -4,20 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sticy Notes | New Media Development | Artevelde University College Ghent</title>
+    <title>Sticky Notes | New Media Development | Artevelde University College Ghent</title>
     <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">    
+    
 </head>
 <body>
     
-    
-    <div id = "stickyNoteObject"></div>
-    <div id = "deleteStickyNote"></div>
-    <div id = "updateStickyNote"></div>
+<div class="container">
+    <div id="stickyNotePart">
+        <input type="text" id = "stickyNoteValue" class="form-control" placeholder="New StickyNote Message">
+        <button id="addStickyNote" class="btn btn-outline-success">Create a stickynote</button>
+    </div>
+
+    <div id="stickyNote_result"></div>
+
+            <div id="textWarning"></div>
+
+            <div class="row mt-5">
+                <div id="container-card">
+                    <p>Get ready!!!</p>   
+                </div>
+        </div>
+</div>
 
     <script src="assets/js/utilities.js"></script>
     <script src="assets/js/models.js"></script>
     <script src="assets/js/services.js"></script>
-    <script src="assets/js/thedom.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

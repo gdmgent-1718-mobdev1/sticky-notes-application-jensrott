@@ -5,18 +5,23 @@ StickyNote Class (Object Constructor)
 2) a private method toString(): String representation of the class
 3) return statement with public accessible properties and methods
 */
+
 // StickyNote Class (Object Constructor)
 function StickyNote() {
+
     let _id;
     let _message;
 
     let _createdDate;
     let _modifiedDate = null;
     let _deletedDate = null;
+
+    
     
     function toString() {
         return _message;
     }
+
 
     return {
         get id() {
@@ -52,3 +57,10 @@ function StickyNote() {
         toString: toString 
     }
 };
+
+
+
+    
+    
+    
+    

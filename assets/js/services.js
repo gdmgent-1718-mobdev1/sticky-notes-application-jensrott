@@ -16,23 +16,24 @@ var ApplicationDbContext = {
             },
             "settings": {},
             "stickynotes": []
-        }; // The data as value of the previous key aka connection string
-        // Get the sored data with the key. If the data is not present in the localstorage --> store the previous data from the variable _dbData into the localstorage via the connection string or namespace
+        }; 
         if(window.localStorage.getItem(this._connectionStr) != null) {
             this._dbData = JSON.parse(window.localStorage.getItem(this._connectionStr));
         } else {
             window.localStorage.setItem(this._connectionStr, JSON.stringify(this._dbData));
         }
     },
-    // Get all sticky notes
+    
     "getStickyNotes": function() {
         const data = this._dbData.stickynotes;
+
         if(data == null || (data != null && data.length == 0)) {
             return null;
         }
         return data;
     },
-    // Get stickynote by id
+
+
     "getStickyNoteById": function(id) {
         const data = this._dbData.stickynotes;
         if(data == null) {
@@ -54,18 +55,26 @@ var ApplicationDbContext = {
         }
         return null;
     },
-    // Add a new sticky note
+  
     "addStickyNote": function(stickyNote) {
+
         if(stickyNote != undefined && stickyNote != null) {
             stickyNote.id = new Date().getTime() + Math.round(Math.random()*new Date().getTime()); // create unique id
             stickyNote.createdDate = new Date().getTime(); // generate timestamp
             this._dbData.stickynotes.push(stickyNote); // Add sticky note to the array stickynotes
             this.save(); // Save this._dbData to the localstorage
             return stickyNote; // return the sticky note to the caller
+
+        function generate() {
+
         }
-        return null;
+
+        }
+        return null; // Else return null
+
+    
     },
-    // Find index of sticky note by id
+
     "findIndexStickyNoteById": function(id) {
         const data = this.getStickyNotes();
         if(data == null) {
@@ -92,7 +101,7 @@ var ApplicationDbContext = {
         }
         return -1;
     },
-    // Update an existing sticky note
+    // Update an existing sticky note dat al bestaat natuurlijk
     "updateStickyNote": function(stickyNote) {
         // 1. Get the index of the sticky note 
         // 2. Replace element in array
@@ -106,7 +115,7 @@ var ApplicationDbContext = {
         this.save();
         return true;
     },
-    // Delete an exisiting sticky note
+    // Delete an exisiting sticky note, dus er moeten er eerst wel zijn
     "deleteStickyNoteById": function(id) {
         // 1. Get the index of the sticky note 
         // 2. Remove element from the array
@@ -120,7 +129,7 @@ var ApplicationDbContext = {
         this.save();
         return true;
     },
-    // Soft delete an exisiting sticky note
+    // Soft delete an exisiting sticky note, we voegen gewoon een softdelete toe ze is dus niet verwijdert van de lijst
     "softDeleteStickyNoteById": function(id) {
         // 1. Get the index of the sticky note 
         // 2. Replace element from the array
@@ -139,7 +148,7 @@ var ApplicationDbContext = {
         this.save();
         return true;
     },
-    // Soft un-delete an exisiting sticky note
+    // Soft un-delete an exisiting sticky note, we halen die softdelelte er terug uit
     "softUnDeleteStickyNoteById": function(id) {
         // 1. Get the index of the sticky note 
         // 2. Replace element from the array
@@ -157,9 +166,22 @@ var ApplicationDbContext = {
         this._dbData.stickynotes[index] = stickyNote;
         this.save();
         return true;
-    }, 
+    },
+
+    // This is a test needs to be removed later
+    "theSettings" : function() {
+        
+        let settings =  this._dbData.settings;
+        console.log("The settings: " + settings);
+    
+    },
+    
     "save": function() {
+
         window.localStorage.setItem(this._connectionStr, JSON.stringify(this._dbData)); // Write the _dbData into the localstorage via the key
         return true; // Always true in modern webbrowsers
-    }
+
+    },
+
+    
 };
